@@ -19,11 +19,11 @@ public class Item {
         return this.name;
     }
 
-    public String getDescription() {
-        return this.description;
-    }
-
     public float gatValue() {
         return this.value;
+    }
+
+    public String getDescription() {
+        return this.description;
     }
 }

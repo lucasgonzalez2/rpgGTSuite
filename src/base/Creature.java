@@ -1,11 +1,11 @@
 public class Creature {
-    private String newCreature;
+    private String name;
 
-    public Creature(String newCreature) {
-        this.newCreature = newCreature;
+    public Creature(String name) {
+        this.name = name;
     }
 
     public String getCreature() {
-       return this.newCreature;
+       return this.name;
     }
 }

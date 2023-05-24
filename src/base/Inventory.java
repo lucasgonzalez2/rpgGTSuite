@@ -15,7 +15,7 @@ public class Inventory {
 
     public Item haveItem(String name) {
         for (Item item : this.items) {
-            if (item.getName.contains(name)) {
+            if (item.getName().contains(name)) {
                 return item;
             }
         }

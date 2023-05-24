@@ -1,8 +1,8 @@
 import java.util.ArrayList;
 
 public class Inventory {
-    ArrayList<Item> items;
-    int capacity;
+    private ArrayList<Item> items;
+    private int capacity;
 
     public Inventory(int capacity) {
         this.items = new ArrayList<Item>();

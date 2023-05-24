@@ -4,17 +4,18 @@ public class Inventory {
     ArrayList<Item> items;
     int capacity;
 
-    public Inventory() {
+    public Inventory(int capacity) {
         this.items = new ArrayList<Item>();
+        this.capacity = capacity;
     }
 
-    public ArrayList<Item> getItems(){
+    public ArrayList<Item> getItems() {
         return this.items;
     }
 
     public Item haveItem(String name) {
-        for (Item item : this.items){
-            if (item.getName.contains(name)){
+        for (Item item : this.items) {
+            if (item.getName.contains(name)) {
                 return item;
             }
         }
@@ -22,7 +23,7 @@ public class Inventory {
     }
 
     public boolean addItem(Item item) {
-        if(items.size() >= capacity) {
+        if (items.size() >= capacity) {
             return false;
         }
         items.add(item);

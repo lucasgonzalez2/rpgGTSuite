@@ -9,43 +9,43 @@ public class Player {
         this.name = name;
     }
 
-    public void getNickname(String nickname) {
-        this.nickname = nickname;
-    }
-
-    public void getRace(String race) {
-        this.race = race;
-    }
-
-    public void getDescription(String description) {
-        this.description = description;
-    }
-
-    public void getAge(int age) {
-        this.age = age;
-    }
-
-    public String setNick() {
+    public String getNickname() {
         return this.nickname;
     }
 
-    public String setName() {
+    public String getName() {
         return this.name;
     }
 
-    public String setRace() {
+    public String getRace() {
         return this.race;
     }
 
-    public String setDescription() {
+    public String getDescription() {
         return this.description;
     }
 
-    public int setAge() {
+    public int getAge() {
         return this.age;
     }
 
-    public String setPlayer() {
-        return setNick() + " " + setAge() + " " + setRace() + " " + setDescription();
+    public void setNick(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setRace(String race) {
+        this.race = race;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 }

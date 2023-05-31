@@ -2,9 +2,11 @@ public class Item {
     private String name;
     private float value;
     private String description;
+    private float weight;
 
-    public Item(String name) {
+    public Item(String name, float weight) {
         this.name = name;
+        this.weight = weight;
     }
 
     public void setValue(float value) {
@@ -19,8 +21,12 @@ public class Item {
         return this.name;
     }
 
-    public float gatValue() {
+    public float getValue() {
         return this.value;
+    }
+
+     public float getWeight() {
+        return this.weight;
     }
 
     public String getDescription() {

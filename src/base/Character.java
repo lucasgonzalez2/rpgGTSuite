@@ -1,4 +1,9 @@
 public class Character extends Creature{
+    
+    public Character(String name) {
+        super(name);
+    }
+
     private String nickname;
 
     public String getNickname() {

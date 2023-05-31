@@ -26,7 +26,14 @@ public class Inventory {
         if (items.size() >= capacity) {
             return false;
         }
-        items.add(item);
+        this.items.add(item);
+        this.capacity -= item.getWeight();
         return true;
+    }
+
+    public void removeItem(Item item){
+        if (this.items.remove(item)){
+            this.capacity += item.getWeight();
+        }
     }
 }

@@ -1,10 +1,9 @@
 public class Character extends Creature{
-    
+    private String nickname;
+
     public Character(String name) {
         super(name);
     }
-
-    private String nickname;
 
     public String getNickname() {
         return this.nickname;

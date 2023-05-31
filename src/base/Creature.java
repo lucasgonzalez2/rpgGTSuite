@@ -55,11 +55,11 @@ public class Creature {
         this.age = age;
     }
 
-    public addItemToInventory(Item item){
-        this.inventory.addItem(item)
+    public boolean addItemToInventory(Item item){
+        return this.inventory.addItem(item);
     }
 
-    public removeItemToInventory(Item item){
-        this.inventory.removeItem(item)
+    public boolean removeItemToInventory(Item item){
+        return this.inventory.removeItem(item);
     }
 }

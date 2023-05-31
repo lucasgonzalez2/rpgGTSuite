@@ -2,9 +2,9 @@ import java.util.ArrayList;
 
 public class Inventory {
     private ArrayList<Item> items;
-    private int capacity;
+    private float capacity;
 
-    public Inventory(int capacity) {
+    public Inventory(float capacity) {
         this.items = new ArrayList<Item>();
         this.capacity = capacity;
     }

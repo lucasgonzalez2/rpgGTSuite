@@ -2,9 +2,9 @@ import java.util.ArrayList;
 
 public class Inventory {
     private ArrayList<Item> items;
-    private int capacity;
+    private float capacity;
 
-    public Inventory(int capacity) {
+    public Inventory(float capacity) {
         this.items = new ArrayList<Item>();
         this.capacity = capacity;
     }
@@ -26,7 +26,16 @@ public class Inventory {
         if (items.size() >= capacity) {
             return false;
         }
-        items.add(item);
+        this.items.add(item);
+        this.capacity -= item.getWeight();
         return true;
+    }
+
+    public boolean removeItem(Item item){
+        if (this.items.remove(item)){
+            this.capacity += item.getWeight();
+            return true;
+        }
+        return false;
     }
 }

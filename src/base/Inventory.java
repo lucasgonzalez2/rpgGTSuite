@@ -32,7 +32,7 @@ public class Inventory {
     }
 
     public boolean removeItem(Item item) {
-        if (this.items.remove(item)){
+        if (this.items.remove(item)) {
             this.capacity += item.getWeight();
             return true;
         }

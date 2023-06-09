@@ -1,4 +1,4 @@
-public class Character extends Creature{
+public class Character extends Creature {
     private String nickname;
 
     public Character(String name) {

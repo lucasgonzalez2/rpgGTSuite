@@ -2,6 +2,7 @@ import java.util.ArrayList;
 
 public class Player {
     private int uniqueID;
+    private String macAddress;
     private String username;
     private String password;
     private ArrayList<Character> characters;
@@ -32,6 +33,14 @@ public class Player {
 
     public String getUsername() {
         return this.username;
+    }
+
+    public void setMacAddress(String macAddress) {
+        this.macAddress = macAddress;
+    }
+
+    public String getMacAddress() {
+        return this.macAddress;
     }
 
     public void setPassword(String password) {

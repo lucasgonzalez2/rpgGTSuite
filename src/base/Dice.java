@@ -14,7 +14,7 @@ public class Dice {
         this(20);
     }
 
-    public int roll(){
+    public int roll() {
         this.lastNumber = this.rand.nextInt(this.sides) + 1;
         return this.lastNumber;
     }

@@ -1,16 +1,20 @@
 package rpggtsuite.base;
 
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Player {
     private int uniqueID;
     private String macAddress;
     private String username;
-    private String password;
-    private ArrayList<Character> characters;
+    private String passwordHash;
+    private final List<Character> characters;
 
     public Player() {
-        characters = new ArrayList<Character>();
+        this.characters = new ArrayList<Character>();
     }
 
     public boolean addCharacter(Character character) {
@@ -19,6 +23,10 @@ public class Player {
 
     public boolean removeCharacter(Character character) {
         return this.characters.remove(character);
+    }
+
+    public List<Character> getCharacters() {
+        return this.characters;
     }
 
     public void setUniqueID(int uniqueID) {
@@ -46,10 +54,24 @@ public class Player {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.passwordHash = hash(password);
     }
 
-    public String getPassword() {
-        return this.password;
+    public boolean checkPassword(String password) {
+        return this.passwordHash != null && this.passwordHash.equals(hash(password));
+    }
+
+    private static String hash(String input) {
+        try {
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            byte[] bytes = digest.digest(input.getBytes(StandardCharsets.UTF_8));
+            StringBuilder hex = new StringBuilder(bytes.length * 2);
+            for (byte b : bytes) {
+                hex.append(String.format("%02x", b));
+            }
+            return hex.toString();
+        } catch (NoSuchAlgorithmException e) {
+            throw new IllegalStateException("SHA-256 is not available", e);
+        }
     }
 }

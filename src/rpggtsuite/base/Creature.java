@@ -1,16 +1,23 @@
 package rpggtsuite.base;
 
 public class Creature {
+    public static final float DEFAULT_INVENTORY_CAPACITY = 100.0f;
+
     private String name;
     private String race;
     private String description;
     private int age;
-    private Inventory inventory;
+    private Inventory<Item> inventory;
     private int hpTotal;
     private int hpNow;
 
     public Creature(String name) {
+        this(name, new Inventory<Item>(DEFAULT_INVENTORY_CAPACITY));
+    }
+
+    public Creature(String name, Inventory<Item> inventory) {
         this.name = name;
+        this.inventory = inventory;
     }
 
     public void setTotal(int hpTotal) {
@@ -45,6 +52,10 @@ public class Creature {
         return this.age;
     }
 
+    public Inventory<Item> getInventory() {
+        return this.inventory;
+    }
+
     public void setRace(String race) {
         this.race = race;
     }
@@ -61,7 +72,7 @@ public class Creature {
         return this.inventory.addItem(item);
     }
 
-    public boolean removeItemToInventory(Item item) {
+    public boolean removeItemFromInventory(Item item) {
         return this.inventory.removeItem(item);
     }
 }

@@ -7,6 +7,10 @@ public class Character extends Creature {
         super(name);
     }
 
+    public Character(String name, Inventory<Item> inventory) {
+        super(name, inventory);
+    }
+
     public String getNickname() {
         return this.nickname;
     }

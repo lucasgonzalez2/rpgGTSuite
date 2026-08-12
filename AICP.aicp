@@ -1,0 +1,12 @@
+@aicp version=1 repo=rpgGTSuite updated=2026-08-11
+@stack lang=java build=none package=default source=[src/] tests=none ci=none
+@agent read this file then README.md; verify claims against src/ before editing; no JDK/build tool declared, compile checks NOT RUN
+@avoid Main.java gitignored and untracked (.gitignore:27); do not assume an entrypoint file exists
+@mod base kind=domain entry=[src/base/] owns=[Character,Creature,Dice,Inventory,Item,Player,Room]
+@inv character-is-creature Character extends Creature source=path:src/base/Character.java:1
+@inv dice-roll-range Dice.roll returns 1..sides; default sides=20 source=path:src/base/Dice.java:17
+@resolver domain-model intent="understand RPG base classes" route=[src/base/Creature.java,src/base/Character.java,src/base/Room.java,src/base/Inventory.java]
+# note: Room references undefined class Master; src/ does not compile as-is (src/base/Room.java:8)
+# note: Creature.inventory never initialized; addItemToInventory throws NPE (src/base/Creature.java:58)
+# note: Player stores password in plaintext (src/base/Player.java:7)
+# note: README plans creation/game modules and mobile/desktop GUI; not implemented

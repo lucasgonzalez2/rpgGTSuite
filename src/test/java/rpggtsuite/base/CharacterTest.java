@@ -3,6 +3,7 @@ package rpggtsuite.base;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -25,5 +26,11 @@ class CharacterTest {
         Inventory<Item> inventory = new Inventory<Item>(2.0f);
         Character character = new Character("hero", inventory);
         assertSame(inventory, character.getInventory());
+    }
+
+    @Test
+    void startsWithASheet() {
+        Character character = new Character("hero");
+        assertNotNull(character.getSheet());
     }
 }

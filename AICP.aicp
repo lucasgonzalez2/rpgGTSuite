@@ -1,12 +1,15 @@
-@aicp version=2 repo=rpgGTSuite updated=2026-08-11
-@stack lang=java build=none package=rpggtsuite.base source=[src/] tests=none ci=none
-@agent read this file then README.md; verify claims against src/ before editing; no JDK/build tool declared, compile checks NOT RUN
+@aicp version=3 repo=rpgGTSuite updated=2026-08-11
+@stack lang=java build=gradle-wrapper-9.7.0 package=rpggtsuite.base source=[src/main/java/] tests=junit5 ci=none
+@cmd test=./gradlew test
+@agent read this file then README.md; verify claims against src/ before editing; run ./gradlew test after changes
 @avoid Main.java gitignored and untracked (.gitignore:27); do not assume an entrypoint file exists
-@mod base kind=domain entry=[src/rpggtsuite/base/] owns=[Character,Creature,Dice,Die,Inventory,Item,Master,Player,Room]
-@inv character-is-creature Character extends Creature source=path:src/rpggtsuite/base/Character.java:3
-@inv dice-roll-range Dice.roll returns 1..sides; default sides=20; sides>=1 enforced source=path:src/rpggtsuite/base/Dice.java:28
-@inv inventory-weight-limit Inventory.addItem rejects items exceeding remaining weight capacity source=path:src/rpggtsuite/base/Inventory.java:46
-@inv password-hashed Player stores only the SHA-256 password hash source=path:src/rpggtsuite/base/Player.java:56
-@resolver domain-model intent="understand RPG base classes" route=[src/rpggtsuite/base/Creature.java,src/rpggtsuite/base/Character.java,src/rpggtsuite/base/Room.java,src/rpggtsuite/base/Inventory.java]
+@mod base kind=domain entry=[src/main/java/rpggtsuite/base/] test=[src/test/java/rpggtsuite/base/] owns=[Character,Creature,Dice,Die,Inventory,Item,Master,Player,Room]
+@inv character-is-creature Character extends Creature source=path:src/main/java/rpggtsuite/base/Character.java:3
+@inv dice-roll-range Dice.roll returns 1..sides; default sides=20; sides>=1 enforced source=path:src/main/java/rpggtsuite/base/Dice.java:28
+@inv inventory-weight-limit Inventory.addItem rejects items exceeding remaining weight capacity source=path:src/main/java/rpggtsuite/base/Inventory.java:46
+@inv password-hashed Player stores only the SHA-256 password hash source=path:src/main/java/rpggtsuite/base/Player.java:56
+@resolver domain-model intent="understand RPG base classes" route=[src/main/java/rpggtsuite/base/Creature.java,src/main/java/rpggtsuite/base/Character.java,src/main/java/rpggtsuite/base/Room.java,src/main/java/rpggtsuite/base/Inventory.java]
+# note: java-library targets Java 11 bytecode for future Android consumption (build.gradle)
+# note: tests are characterization tests over existing behavior; TDD from new features on
 # note: README plans creation/game modules and mobile/desktop GUI; not implemented
 # note: Room.checkPassword compares the room code in plaintext; low sensitivity, no hashing

@@ -1,5 +1,7 @@
 package rpggtsuite.base;
 
+import java.util.Random;
+
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -32,5 +34,27 @@ class CharacterTest {
     void startsWithASheet() {
         Character character = new Character("hero");
         assertNotNull(character.getSheet());
+    }
+
+    @Test
+    void rollInitiativeWithoutDexterityStaysWithinDieRange() {
+        Character character = new Character("hero");
+        for (int i = 0; i < 50; i++) {
+            int result = character.rollInitiative(new Random(i));
+            assertTrue(result >= 1 && result <= 20);
+        }
+    }
+
+    @Test
+    void rollInitiativeAddsDexterityModifier() {
+        Character noMod = new Character("scout");
+        noMod.getSheet().setDexterity(new Dexterity(10));
+        int base = noMod.rollInitiative(new Random(7));
+
+        Character withMod = new Character("scout");
+        withMod.getSheet().setDexterity(new Dexterity(16));
+        int boosted = withMod.rollInitiative(new Random(7));
+
+        assertEquals(base + 3, boosted);
     }
 }

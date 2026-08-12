@@ -1,17 +1,17 @@
 package rpggtsuite.base;
 
-public class Intelligence extends AbilityScore {
-    public Intelligence(int value) {
+public class Charisma extends AbilityScore {
+    public Charisma(int value) {
         super(value);
     }
 
     @Override
     public String getName() {
-        return "Intelligence";
+        return "Charisma";
     }
 
     @Override
     public AbilityType getType() {
-        return AbilityType.INTELLIGENCE;
+        return AbilityType.CHARISMA;
     }
 }

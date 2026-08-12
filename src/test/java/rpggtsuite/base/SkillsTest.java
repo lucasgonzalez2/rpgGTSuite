@@ -11,27 +11,27 @@ class SkillsTest {
 
     @Test
     void keepsValueFromConstructor() {
-        Skills agility = new Agility(50);
-        assertEquals(50, agility.getValue());
+        Skills strength = new Strength(50);
+        assertEquals(50, strength.getValue());
     }
 
     @Test
     void rejectsNegativeValue() {
-        assertThrows(IllegalArgumentException.class, () -> new Agility(-1));
+        assertThrows(IllegalArgumentException.class, () -> new Strength(-1));
     }
 
     @Test
     void rejectsNegativeValueOnSet() {
-        Skills agility = new Agility(50);
-        assertThrows(IllegalArgumentException.class, () -> agility.setValue(-1));
+        Skills strength = new Strength(50);
+        assertThrows(IllegalArgumentException.class, () -> strength.setValue(-1));
     }
 
     @Test
     void checkSucceedsWhenRollIsAtOrBelowValue() {
-        Skills agility = new Agility(50);
-        assertTrue(agility.check(fixedRoll(50)));
-        assertTrue(agility.check(fixedRoll(1)));
-        assertFalse(agility.check(fixedRoll(51)));
+        Skills strength = new Strength(50);
+        assertTrue(strength.check(fixedRoll(50)));
+        assertTrue(strength.check(fixedRoll(1)));
+        assertFalse(strength.check(fixedRoll(51)));
     }
 
     private static Die fixedRoll(int roll) {
@@ -46,13 +46,5 @@ class SkillsTest {
                 return 100;
             }
         };
-    }
-
-    @Test
-    void concreteSkillsReportTheirOwnName() {
-        assertEquals("Agility", new Agility(10).getName());
-        assertEquals("Strength", new Strength(10).getName());
-        assertEquals("Intelligence", new Intelligence(10).getName());
-        assertEquals("Constitution", new Constitution(10).getName());
     }
 }

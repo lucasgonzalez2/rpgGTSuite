@@ -1,5 +1,7 @@
 package rpggtsuite.base;
 
+import java.util.Random;
+
 public class Character extends Creature {
     private String nickname;
     private final Sheet sheet;
@@ -24,5 +26,9 @@ public class Character extends Creature {
 
     public Sheet getSheet() {
         return this.sheet;
+    }
+
+    public int rollInitiative(Random random) {
+        return new Dice(20, random).roll() + this.sheet.abilityModifier(AbilityType.DEXTERITY);
     }
 }

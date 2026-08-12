@@ -1,5 +1,8 @@
 package rpggtsuite.base;
 
+import java.util.EnumSet;
+import java.util.Set;
+
 public class Creature {
     public static final float DEFAULT_INVENTORY_CAPACITY = 100.0f;
 
@@ -10,6 +13,7 @@ public class Creature {
     private Inventory<Item> inventory;
     private int hpTotal;
     private int hpNow;
+    private final Set<Condition> conditions;
 
     public Creature(String name) {
         this(name, new Inventory<Item>(DEFAULT_INVENTORY_CAPACITY));
@@ -18,6 +22,7 @@ public class Creature {
     public Creature(String name, Inventory<Item> inventory) {
         this.name = name;
         this.inventory = inventory;
+        this.conditions = EnumSet.noneOf(Condition.class);
     }
 
     public void setTotal(int hpTotal) {
@@ -74,5 +79,21 @@ public class Creature {
 
     public boolean removeItemFromInventory(Item item) {
         return this.inventory.removeItem(item);
+    }
+
+    public boolean addCondition(Condition condition) {
+        return this.conditions.add(condition);
+    }
+
+    public boolean removeCondition(Condition condition) {
+        return this.conditions.remove(condition);
+    }
+
+    public boolean hasCondition(Condition condition) {
+        return this.conditions.contains(condition);
+    }
+
+    public Set<Condition> getConditions() {
+        return this.conditions;
     }
 }

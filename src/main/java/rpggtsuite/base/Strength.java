@@ -1,6 +1,6 @@
 package rpggtsuite.base;
 
-public class Strength extends Skills {
+public class Strength extends AbilityScore {
     public Strength(int value) {
         super(value);
     }
@@ -8,5 +8,10 @@ public class Strength extends Skills {
     @Override
     public String getName() {
         return "Strength";
+    }
+
+    @Override
+    public AbilityType getType() {
+        return AbilityType.STRENGTH;
     }
 }

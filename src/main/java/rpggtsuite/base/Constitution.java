@@ -1,6 +1,6 @@
 package rpggtsuite.base;
 
-public class Constitution extends Skills {
+public class Constitution extends AbilityScore {
     public Constitution(int value) {
         super(value);
     }
@@ -8,5 +8,10 @@ public class Constitution extends Skills {
     @Override
     public String getName() {
         return "Constitution";
+    }
+
+    @Override
+    public AbilityType getType() {
+        return AbilityType.CONSTITUTION;
     }
 }

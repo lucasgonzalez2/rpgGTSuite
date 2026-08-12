@@ -54,4 +54,20 @@ class CreatureTest {
         assertTrue(creature.removeItemFromInventory(axe));
         assertFalse(creature.removeItemFromInventory(axe));
     }
+
+    @Test
+    void startsWithoutConditions() {
+        Creature creature = new Creature("skeleton");
+        assertTrue(creature.getConditions().isEmpty());
+        assertFalse(creature.hasCondition(Condition.PRONE));
+    }
+
+    @Test
+    void tracksConditions() {
+        Creature creature = new Creature("skeleton");
+        assertTrue(creature.addCondition(Condition.POISONED));
+        assertTrue(creature.hasCondition(Condition.POISONED));
+        assertTrue(creature.removeCondition(Condition.POISONED));
+        assertFalse(creature.hasCondition(Condition.POISONED));
+    }
 }

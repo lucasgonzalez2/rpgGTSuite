@@ -1,10 +1,10 @@
 package rpggtsuite.base;
 
 public class Item {
-    private String name;
+    private final String name;
+    private final float weight;
     private float value;
     private String description;
-    private float weight;
 
     public Item(String name, float weight) {
         this.name = name;
@@ -27,7 +27,7 @@ public class Item {
         return this.value;
     }
 
-     public float getWeight() {
+    public float getWeight() {
         return this.weight;
     }
 

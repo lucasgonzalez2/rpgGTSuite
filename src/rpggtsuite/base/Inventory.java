@@ -1,22 +1,37 @@
 package rpggtsuite.base;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class Inventory {
-    private ArrayList<Item> items;
-    private float capacity;
+public class Inventory<T extends Item> {
+    private final List<T> items;
+    private final float capacity;
+    private float usedWeight;
 
     public Inventory(float capacity) {
-        this.items = new ArrayList<Item>();
+        this.items = new ArrayList<T>();
         this.capacity = capacity;
+        this.usedWeight = 0.0f;
     }
 
-    public ArrayList<Item> getItems() {
+    public List<T> getItems() {
         return this.items;
     }
 
-    public Item haveItem(String name) {
-        for (Item item : this.items) {
+    public float getCapacity() {
+        return this.capacity;
+    }
+
+    public float getUsedWeight() {
+        return this.usedWeight;
+    }
+
+    public float getFreeWeight() {
+        return this.capacity - this.usedWeight;
+    }
+
+    public T haveItem(String name) {
+        for (T item : this.items) {
             if (item.getName().contains(name)) {
                 return item;
             }
@@ -24,18 +39,21 @@ public class Inventory {
         return null;
     }
 
-    public boolean addItem(Item item) {
-        if (items.size() >= capacity) {
+    public boolean addItem(T item) {
+        if (item == null) {
+            return false;
+        }
+        if (this.usedWeight + item.getWeight() > this.capacity) {
             return false;
         }
         this.items.add(item);
-        this.capacity -= item.getWeight();
+        this.usedWeight += item.getWeight();
         return true;
     }
 
-    public boolean removeItem(Item item) {
+    public boolean removeItem(T item) {
         if (this.items.remove(item)) {
-            this.capacity += item.getWeight();
+            this.usedWeight -= item.getWeight();
             return true;
         }
         return false;

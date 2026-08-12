@@ -1,3 +1,5 @@
+package rpggtsuite.base;
+
 import java.util.Random;
 
 public class Dice {

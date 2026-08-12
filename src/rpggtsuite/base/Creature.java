@@ -1,3 +1,5 @@
+package rpggtsuite.base;
+
 public class Creature {
     private String name;
     private String race;

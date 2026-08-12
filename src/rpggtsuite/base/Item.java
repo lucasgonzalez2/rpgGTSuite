@@ -1,3 +1,5 @@
+package rpggtsuite.base;
+
 public class Item {
     private String name;
     private float value;

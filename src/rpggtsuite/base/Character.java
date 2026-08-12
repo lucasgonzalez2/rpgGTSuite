@@ -1,3 +1,5 @@
+package rpggtsuite.base;
+
 public class Character extends Creature {
     private String nickname;
 
